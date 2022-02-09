@@ -7,15 +7,18 @@
 
 import UIKit
 
-class EntryDetailViewController: UIViewController {
+class EntryDetailViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     
     
     var entry: Entry?
+    var journal: Journal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleTextField.delegate = self
         updateViews()
 
     }
@@ -27,13 +30,19 @@ class EntryDetailViewController: UIViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let title = titleTextField.text, !title.isEmpty,
-              let body = bodyTextView.text, !body.isEmpty else { return }
+              let body = bodyTextView.text, !body.isEmpty,
+              let journal = journal else { return }
         if let entry = entry {
-            print("\(entry.title) to be implemented tomorrow.")
+            EntryController.update(entry: entry, title: title, body: body)
         } else {
-            EntryController.shared.createEntryWith(title: title, body: body)
+            EntryController.createEntryWith(title: title, body: body, journal: journal)
         }
         navigationController?.popViewController(animated: true)
+    }
+    
+    //do I need this?
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
     
     func updateViews() {

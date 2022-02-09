@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A33D4CA27B3DCBE00F43023 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A33D4C927B3DCBE00F43023 /* Journal.swift */; };
+		4A33D4CC27B3DD6B00F43023 /* JournalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A33D4CB27B3DD6B00F43023 /* JournalController.swift */; };
+		4A33D4CE27B3F0CF00F43023 /* JournalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A33D4CD27B3F0CF00F43023 /* JournalListViewController.swift */; };
 		4AD20B2727B3504A00AB3494 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD20B2627B3504A00AB3494 /* Entry.swift */; };
 		4AD20B2927B3514000AB3494 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD20B2827B3514000AB3494 /* EntryController.swift */; };
 		4AD20B2B27B354AE00AB3494 /* EntryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD20B2A27B354AE00AB3494 /* EntryListTableViewController.swift */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A33D4C927B3DCBE00F43023 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		4A33D4CB27B3DD6B00F43023 /* JournalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalController.swift; sourceTree = "<group>"; };
+		4A33D4CD27B3F0CF00F43023 /* JournalListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalListViewController.swift; sourceTree = "<group>"; };
 		4AD20B2627B3504A00AB3494 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		4AD20B2827B3514000AB3494 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
 		4AD20B2A27B354AE00AB3494 /* EntryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryListTableViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD20B2827B3514000AB3494 /* EntryController.swift */,
+				4A33D4CB27B3DD6B00F43023 /* JournalController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -55,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD20B2627B3504A00AB3494 /* Entry.swift */,
+				4A33D4C927B3DCBE00F43023 /* Journal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -64,6 +72,7 @@
 			children = (
 				4AD20B2A27B354AE00AB3494 /* EntryListTableViewController.swift */,
 				4AD20B2C27B35B4900AB3494 /* EntryDetailViewController.swift */,
+				4A33D4CD27B3F0CF00F43023 /* JournalListViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -186,11 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A33D4CE27B3F0CF00F43023 /* JournalListViewController.swift in Sources */,
 				4AD20B2727B3504A00AB3494 /* Entry.swift in Sources */,
+				4A33D4CC27B3DD6B00F43023 /* JournalController.swift in Sources */,
 				4AD20B2B27B354AE00AB3494 /* EntryListTableViewController.swift in Sources */,
 				7EDA120F259D233600BBD350 /* AppDelegate.swift in Sources */,
 				4AD20B2927B3514000AB3494 /* EntryController.swift in Sources */,
 				4AD20B2D27B35B4900AB3494 /* EntryDetailViewController.swift in Sources */,
+				4A33D4CA27B3DCBE00F43023 /* Journal.swift in Sources */,
 				7EDA1211259D233600BBD350 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

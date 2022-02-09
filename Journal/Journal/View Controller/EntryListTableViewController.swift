@@ -9,9 +9,10 @@ import UIKit
 
 class EntryListTableViewController: UITableViewController {
 
+    var journal: Journal?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        EntryController.shared.loadFromPersistentStorage()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,15 +24,14 @@ class EntryListTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return EntryController.shared.entries.count
+        return journal?.entries.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
         
-        let entry = EntryController.shared.entries[indexPath.row]
+        guard let entry = journal?.entries[indexPath.row] else { return UITableViewCell() }
         
         cell.textLabel?.text = entry.title
         
@@ -44,8 +44,9 @@ class EntryListTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let entryToDelete = EntryController.shared.entries[indexPath.row]
-            EntryController.shared.deleteEntry(entry: entryToDelete)
+            guard let journal = journal else { return }
+            let entryToDelete = journal.entries[indexPath.row]
+            EntryController.deleteEntry(entry: entryToDelete, journal: journal)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
           
@@ -58,11 +59,15 @@ class EntryListTableViewController: UITableViewController {
 
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let journal = journal,
+              let destination = segue.destination as? EntryDetailViewController else { return }
         if segue.identifier == "showEntry" {
-            guard let indexPath = tableView.indexPathForSelectedRow,
-           let destination = segue.destination as? EntryDetailViewController else { return }
-        let entryToSend = EntryController.shared.entries[indexPath.row]
-        destination.entry = entryToSend
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let entryToSend = journal.entries[indexPath.row]
+            destination.journal = journal
+            destination.entry = entryToSend
+        } else if segue.identifier == "createNewEntry" {
+            destination.journal = journal
         }
     }
 
